@@ -1,21 +1,18 @@
-# ighv4-34-avy-nhs-sle
+# ighv4-34-avy-sle
 
-**Do the germline self-reactivity motifs AVY and NHS in IGHV4-34 heavy-chain sequences get retained at different rates in IgM vs IgG repertoires of SLE patients?**
+**Is the germline self-reactivity motif AVY in IGHV4-34 heavy-chain sequences retained at different rates in IgM vs IgG repertoires of SLE patients, and does that depend on overall mutation load?**
 
 A beginner-level, exploratory antibody-repertoire analysis of public data from the Observed Antibody Space (OAS). It is a multi-subject follow-up to an earlier single-patient analysis.
 
-**Status:** AVY analysis finished for 7 subjects (IgM vs IgG). NHS, mutation load and a paired figure are planned (see [Next steps](#next-steps)). Results are exploratory.
+**Status:** the AVY comparison between IgM and IgG is finished for 7 subjects. The mutation-load analysis and a paired figure are next (see [Next steps](#next-steps)). Results are exploratory.
 
 ---
 
 ## Background
+	
+IGHV4-34 is a heavy-chain V gene whose germline sequence already encodes self-reactivity. Antibodies using it are over-represented in SLE, and a germline-encoded hydrophobic patch, **AVY** (Ala-Val-Tyr) at the end of framework region 1 (FR1), is linked to that self-binding in the literature.
 
-IGHV4-34 is a heavy-chain V gene whose germline sequence already encodes self-reactivity. Antibodies using it are over-represented in SLE, and two germline-encoded features are linked to that self-binding:
-
-- **AVY** (Ala-Val-Tyr) at the end of framework region 1 (FR1)
-- **NHS** (Asn-His-Ser) in CDR2
-
-If the motifs are lost (by somatic hypermutation, or by selection against self-reactive cells), the self-reactivity is expected to drop. This project asks how often AVY is still intact in IgM and in class-switched IgG sequences of SLE patients. IgM vs IgG is used as a rough proxy for B-cell maturation.
+If AVY is lost (by somatic hypermutation, or by selection against self-reactive cells), the self-reactivity is expected to drop. This project asks how often AVY is still intact in IgM and in class-switched IgG sequences of SLE patients. IgM vs IgG is used as a rough proxy for B-cell maturation.
 
 ## Data
 
@@ -50,6 +47,7 @@ scripts/
   analyze_subjects.py    per-subject, per-isotype AVY summary
   clone_check.py         clonality check (identical CDR3 groups)
   bootstrap_stats.py     clone-aware bootstrap intervals and sign test
+  mutation_load.py       AVY retention at matched mutation load (to be added)
 tests/
   test_motifs.py         unit tests for the motif logic
 summary_tables/          small result tables (see Results)
@@ -91,7 +89,7 @@ Full tables are in [`summary_tables/`](summary_tables/): `avy_summary.csv` (coun
 
 ### What the results do and do not show
 
-They describe how AVY retention differs between IgM and IgG within these SLE patients. They do **not** show why AVY is lost. Selection against self-reactive cells and the chance accumulation of somatic mutations would both produce lower retention in IgG. Separating them needs the mutation-load analysis below.
+They describe how AVY retention differs between IgM and IgG within these SLE patients. They do **not** show why AVY is lost. Selection against self-reactive cells and the chance accumulation of somatic mutations would both produce lower retention in IgG, because IgG sequences are generally more mutated. The mutation-load analysis below is meant to separate the two, and it is not finished.
 
 ## Limitations
 
@@ -105,8 +103,7 @@ They describe how AVY retention differs between IgM and IgG within these SLE pat
 
 ## Next steps
 
-- [ ] Mutation load vs AVY status (using the `v_identity` column) to separate selection from chance accumulation
-- [ ] NHS in CDR2, after checking the exact motif definition and position in the literature
+- [ ] Mutation load vs AVY status (using the `v_identity` column): does IgG still retain AVY less than IgM at the same overall mutation level?
 - [ ] Paired IgM-to-IgG figure per subject, with bootstrap intervals
 - [ ] Data manifest with run accessions and a download script
 - [ ] Optional exploratory comparison with healthy donors from other OAS studies, clearly labeled as cross-study
