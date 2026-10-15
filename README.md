@@ -4,7 +4,7 @@
 
 An exploratory antibody-repertoire analysis of public data from the Observed Antibody Space (OAS). It is a multi-subject follow-up to an earlier single-patient analysis.
 
-**Status:** the AVY comparison between IgM and IgG is finished for 7 subjects. The mutation-load analysis and a paired figure are next (see [Next steps](#next-steps)). Results are exploratory.
+**Status:** the AVY comparison between IgM and IgG is finished for 7 subjects. The mutation-load analysis and a paired figure are next (see [Next steps](#next-steps)). Results are exploratory. (code is A.I assisted)
 
 ---
 
